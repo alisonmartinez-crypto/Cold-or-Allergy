@@ -25,7 +25,7 @@ Known Issues:
 -->
 	
    <head> 
-      <title>Cold or Allergy</title>  
+      <title>Cold or Allergy Questionnaire</title>  
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="mobile-web-app-capable" content="yes">
       <link rel="stylesheet" href="w3.css">
@@ -36,17 +36,27 @@ Known Issues:
 <script>
         var allergy_count = 0;
         var cold_count = 0;
+        var allergy_percent = 0;
+        var cold_percent = 0;
+       
 
 
         function allergyAdd(){
             allergy_count = allergy_count + 1;
-		alert(allergy_count);
+		    //alert("allergy_count is " + allergy_count + "\ncold_count is " + cold_count)
         }
 
         function coldAdd(){
             cold_count = cold_count + 1;
+            //alert("allergy_count is " + allergy_count + "\ncold_count is " + cold_count)
         }
 
+    function changeText(){
+      var allergy_percent = allergy_count/(allergy_count + cold_count)*100;
+      var cold_percent = cold_count/(allergy_count + cold_count)*100;
+      var initialText = document.getElementById("results");
+      initialText.innerHTML = "Probability it is allergies = " + allergy_percent + "% <br> Probability it is a cold = " + cold_percent + "%"
+}
   </script>
 
 
@@ -93,7 +103,9 @@ Known Issues:
 	</div>
 	
     	<div id="content" class="w3-container">
-        <p>Put Question 1 content here.</p>    
+        <p>Do you have a fever?</p>    
+        <a href="#two" onclick="coldAdd()" class="w3-btn w3-grey w3-round" > Yes </a>
+        <a href="#two" onclick="allergyAdd()" class="w3-btn w3-grey w3-round" > No </a>
     	</div>
 </div>
 
@@ -103,12 +115,73 @@ Known Issues:
 	</div>
 	
 	<div id="content" class="w3-container">
-		<p>Content of page 2 goes here.</p>
+		<p>Do you have a sore throat?</p>
+        <a href="#three" onclick="coldAdd()" class="w3-btn w3-grey w3-round" > Yes </a>
+        <a href="#three" onclick="allergyAdd()" class="w3-btn w3-grey w3-round" > No </a>
 	</div>
 </div>	
 
+<div class="page" id="three">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 3</h1>
+	</div>
+
+   <div id="content" class="w3-container">
+		<p>Do you have puffy eyelids?</p>
+        <a href="#four" onclick="allergyAdd()" class="w3-btn w3-grey w3-round" > Yes </a>
+        <a href="#four" onclick="coldAdd()" class="w3-btn w3-grey w3-round" > No </a>
+     </div>
+</div>	
+
+<div class="page" id="four">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 4</h1>
+	</div>
+
+    <div id="content" class="w3-container">
+		<p>Do you have any body aches?</p>
+        <a href="#five" onclick="coldAdd()" class="w3-btn w3-grey w3-round" > Yes </a>
+        <a href="#five" onclick="allergyAdd()" class="w3-btn w3-grey w3-round" > No </a>
+     </div>
+</div>
+
+<div class="page" id="five">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 5</h1>
+	</div>
+
+    <div id="content" class="w3-container">
+		<p>Is your mucus yellow/green?</p>
+        <a href="#six" onclick="coldAdd()" class="w3-btn w3-grey w3-round" > Yes </a>
+        <a href="#six" onclick="allergyAdd()" class="w3-btn w3-grey w3-round" > No </a>
+     </div>
+</div>	
+
+<div class="page" id="six">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 6</h1>
+	</div>
+
+    <div id="content" class="w3-container">
+		<p>Has it lasted longer than 14 days (2 weeks)?</p>
+        <a href="#seven" onclick="allergyAdd()" class="w3-btn w3-grey w3-round" > Yes </a>
+        <a href="#seven" onclick="coldAdd()" class="w3-btn w3-grey w3-round" > No </a>
+     </div>
+</div>	
+
+<div class="page" id="seven">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Results</h1>
+	</div>
+
+    <div id="content" class="w3-container">
+		<p id="results">Press below to see your results!</p>
+        <a onclick="changeText()"  class="w3-btn w3-grey w3-round" > Click here for results </a>
+     </div>
+</div>	
+   
 <footer class="w3-bottom w3-container w3-flat-carrot">
-	<p>DIY!</p>
+	<p>Hi lol</p>
 </footer>
 
 </body>
